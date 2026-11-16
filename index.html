@@ -7,88 +7,118 @@
 <title>WoodSafe – Key Individuals</title>
 <style>
   :root {
-    --bg: #f5f6f3; --panel: #ffffff; --ink: #1c2420; --muted: #66706a; --line: #dfe3dc;
-    --accent: #2f6b4a; --accent-soft: #e4efe7;
-    --a: #1f7a4d; --b: #b07a14; --c: #7b8480;
-    --warn: #a4521b; --warn-soft: #fbeee2;
+    --bg: #f4f1ea; --panel: #fffdf9; --ink: #1d2a23; --muted: #6b756e; --line: #e4dfd3; --soft: #f0ece2;
+    --accent: #2b5d43; --accent-ink: #ffffff; --accent-soft: #e3ede4; --hero-a: #234a36; --hero-b: #37694d;
+    --a: #2b7a52; --b: #b9862a; --c: #8a918c; --track: #e9e4d8;
+    --warn: #a4521b; --warn-soft: #fbeee0;
+    --shadow: 0 1px 2px rgba(40,50,40,.05), 0 6px 20px -8px rgba(40,50,40,.14);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #141815; --panel: #1d221f; --ink: #e8ece8; --muted: #9aa49e; --line: #2e3531;
-      --accent: #7cc49a; --accent-soft: #23342a;
-      --a: #6fcf97; --b: #e0b354; --c: #8d9692;
-      --warn: #e7a06a; --warn-soft: #3a2a1d;
+      --bg: #111613; --panel: #19201c; --ink: #e9ede9; --muted: #96a19a; --line: #2a332e; --soft: #1f2722;
+      --accent: #86caa2; --accent-ink: #0f1a14; --accent-soft: #213329; --hero-a: #16271e; --hero-b: #1f3a2c;
+      --a: #6fcf97; --b: #e0b354; --c: #7f8984; --track: #2a332e;
+      --warn: #e7a06a; --warn-soft: #38281b;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -10px rgba(0,0,0,.5);
     }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
-  header { padding: 20px 28px 0; }
-  h1 { font-size: 20px; margin: 0 0 2px; }
-  .sub { color: var(--muted); font-size: 13px; }
-  .tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 16px 28px 0; }
-  .tab { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 7px 13px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 14px; }
-  .tab .n { color: var(--muted); font-size: 12px; margin-left: 5px; }
-  .tab.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-  .tab.on .n { color: inherit; opacity: .8; }
-  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 14px 28px; position: sticky; top: 0; background: var(--bg); z-index: 5; border-bottom: 1px solid var(--line); }
-  .bar input[type=search], .bar select { font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
-  .bar input[type=search] { flex: 1 1 220px; min-width: 180px; }
-  .bar button { font: inherit; font-size: 14px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); cursor: pointer; }
-  .bar label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
-  main { padding: 18px 28px 60px; max-width: 1100px; }
-  .company { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; }
-  .company h2 { margin: 0 0 6px; font-size: 17px; }
-  .company dl { display: grid; grid-template-columns: 150px 1fr; gap: 4px 14px; margin: 0; font-size: 13.5px; }
-  .company dt { color: var(--muted); }
+  body { margin: 0; font: 15px/1.5 var(--sans); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  header { background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); color: #f3f6f2; padding: 34px 0 30px; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 34px; line-height: 1.15; margin: 6px 0 6px; letter-spacing: -.01em; }
+  .sub { font-size: 13.5px; opacity: .78; max-width: 62ch; }
+  .stats { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 22px; }
+  .stat b { display: block; font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; opacity: .75; }
+  .sticky { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 14px 0 10px; }
+  .tab { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 6px 13px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 13.5px; font-weight: 500; transition: background .15s, border-color .15s, transform .1s; }
+  .tab:hover { border-color: var(--accent); }
+  .tab:active { transform: scale(.97); }
+  .tab .n { color: var(--muted); font-size: 11.5px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .tab.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .tab.on .n { color: inherit; opacity: .75; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 0 0 12px; }
+  .bar input[type=search], .bar select, .bar button { font: inherit; font-size: 13.5px; height: 36px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--ink); }
+  .bar input[type=search] { flex: 1 1 240px; min-width: 180px; }
+  .bar input[type=search]:focus, .bar select:focus, .mine input:focus, .mine select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .bar button { cursor: pointer; font-weight: 500; }
+  .bar button:hover { border-color: var(--accent); color: var(--accent); }
+  .bar label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; padding: 0 4px; }
+  .bar input[type=checkbox] { accent-color: var(--accent); }
+  main { padding: 22px 0 70px; }
+  .company { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 14px; padding: 18px 22px; margin-bottom: 18px; box-shadow: var(--shadow); }
+  .company h2 { font-family: var(--serif); font-weight: 600; margin: 0 0 10px; font-size: 22px; }
+  .company dl { display: grid; grid-template-columns: 140px 1fr; gap: 7px 16px; margin: 0; font-size: 13.5px; }
+  .company dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding-top: 2px; }
   .company dd { margin: 0; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; display: grid; grid-template-columns: 54px 1fr; gap: 14px; }
-  .card.done { opacity: .6; }
+  .legend { font-size: 12.5px; color: var(--muted); margin: 0 0 16px; max-width: 90ch; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; margin-bottom: 12px; display: grid; grid-template-columns: 68px 1fr; gap: 18px; box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
+  .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transform: translateY(-1px); }
+  .card.done { opacity: .55; }
   .rank { text-align: center; }
-  .rank .pos { font-size: 12px; color: var(--muted); }
-  .rank .score { font-size: 21px; font-weight: 650; line-height: 1.1; }
-  .tier { display: inline-block; font-size: 11px; font-weight: 650; border-radius: 5px; padding: 1px 6px; margin-top: 4px; color: var(--bg); }
+  .ring { --col: var(--c); width: 60px; height: 60px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; background: radial-gradient(closest-side, var(--panel) 78%, transparent 80%), conic-gradient(var(--col) calc(var(--p) * 1%), var(--track) 0); }
+  .ring.A { --col: var(--a); } .ring.B { --col: var(--b); }
+  .ring span { font-family: var(--serif); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .pos { font-size: 11.5px; color: var(--muted); margin-top: 7px; font-variant-numeric: tabular-nums; }
+  .tier { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; border-radius: 6px; padding: 2px 7px; margin-top: 4px; color: var(--panel); }
   .tier.A { background: var(--a); } .tier.B { background: var(--b); } .tier.C { background: var(--c); }
-  .name { font-size: 16px; font-weight: 650; }
-  .title { color: var(--ink); }
+  .name { font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.25; }
+  .title { margin-top: 1px; }
   .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
-  .chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+  .chip { font-size: 11.5px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
   .chip.low { background: var(--warn-soft); color: var(--warn); }
-  .why { font-size: 14px; margin: 6px 0; }
-  .why b { font-weight: 600; }
-  .contact { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13.5px; margin-top: 8px; }
-  .contact a { color: var(--accent); text-decoration: none; }
-  .contact a:hover { text-decoration: underline; }
-  .guess { color: var(--warn); font-size: 12px; }
-  .srcs { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .why { font-size: 14px; margin: 6px 0; max-width: 78ch; }
+  .why b { font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+  .contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 5px 11px; border-radius: 9px; border: 1px solid var(--line); background: var(--soft); color: var(--ink); text-decoration: none; }
+  a.btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 500; }
+  a.btn.primary:hover { color: var(--accent-ink); filter: brightness(1.08); }
+  .guess { color: var(--warn); font-size: 11px; background: var(--warn-soft); padding: 1px 6px; border-radius: 5px; }
+  .srcs { font-size: 12px; color: var(--muted); margin-top: 8px; }
   .srcs a { color: var(--muted); }
-  .mine { display: flex; gap: 10px; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
-  .mine select, .mine input { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--ink); }
-  .mine input { flex: 1; }
-  .empty { color: var(--muted); padding: 30px 0; }
-  .legend { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
-  @media (max-width: 640px) { .company dl { grid-template-columns: 1fr; } header, .tabs, .bar, main { padding-left: 14px; padding-right: 14px; } }
+  .mine { display: flex; gap: 8px; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .mine select, .mine input { font: inherit; font-size: 13px; height: 32px; padding: 0 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  .mine input { flex: 1; min-width: 0; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 14px; } h1 { font-size: 27px; }
+    .company dl { grid-template-columns: 1fr; gap: 2px; } .company dt { margin-top: 8px; }
+    .card { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
+    .rank { display: flex; align-items: center; gap: 12px; text-align: left; } .ring { margin: 0; width: 48px; height: 48px; } .ring span { font-size: 16px; } .pos, .tier { margin-top: 0; }
+    .mine { flex-wrap: wrap; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>WoodSafe – Key Individuals</h1>
+<header><div class="wrap">
+  <div class="eyebrow">FrostGreen · WoodSafe</div>
+  <h1>Key individuals</h1>
   <div class="sub" id="sub"></div>
-</header>
-<div class="tabs" id="tabs"></div>
-<div class="bar">
-  <input type="search" id="q" placeholder="Search name, title, site…">
-  <select id="fn"><option value="">All functions</option></select>
-  <select id="region"><option value="">All regions</option></select>
-  <select id="tier"><option value="">All tiers</option><option>A</option><option>B</option><option>C</option></select>
-  <label><input type="checkbox" id="hideDone"> Hide contacted</label>
-  <button id="csv">Export CSV</button>
-</div>
-<main>
+  <div class="stats" id="stats"></div>
+</div></header>
+<div class="sticky"><div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search name, title, site…">
+    <select id="fn"><option value="">All functions</option></select>
+    <select id="region"><option value="">All regions</option></select>
+    <select id="tier"><option value="">All tiers</option><option>A</option><option>B</option><option>C</option></select>
+    <label><input type="checkbox" id="hideDone"> Hide contacted</label>
+    <button id="csv">Export CSV</button>
+  </div>
+</div></div>
+<main><div class="wrap">
   <div id="company"></div>
   <p class="legend">Score 0–100 = role fit for sharps and hazardous-waste containers + site relevance + buying influence + confidence the person is still in the role. Tier A = contact first, B = good secondary route, C = fallback or referral. Emails marked "pattern guess" are built from the company's usual address format and are not confirmed.</p>
   <div id="list"></div>
-</main>
+</div></main>
 <script>
 // WoodSafe key individuals. Collected 2026-11-15 via Perplexity (public LinkedIn/web data). Every person re-checked the same day against their public profile; leavers removed, changed details corrected.
 // Row: [name, title, site, country, region, function, score, confidence, why, linkedinSlug, flags]
@@ -413,7 +443,7 @@ const save = () => localStorage.setItem("woodsafe-contacts", JSON.stringify(stor
 const key = c => c.company + "|" + c.name;
 let current = "All";
 
-$("#sub").textContent = `${D.contacts.length} people across ${D.companies.length} companies · data collected ${D.updated} · your status and notes are saved in this browser only`;
+$("#sub").textContent = `The best people to approach about WoodSafe at each company, ranked. Data collected ${D.updated}. Your status and notes are saved in this browser only.`;
 
 const uniq = f => [...new Set(D.contacts.map(f).filter(Boolean))].sort();
 uniq(c => c.fn).forEach(v => $("#fn").insertAdjacentHTML("beforeend", `<option>${esc(v)}</option>`));
@@ -459,21 +489,21 @@ function render() {
   $("#list").innerHTML = rows.map((c, i) => {
     const s = store[key(c)] || {};
     const done = ["Contacted", "Replied", "Not relevant"].includes(s.status);
-    const email = c.email ? `<span>✉ <a href="mailto:${esc(c.email)}">${esc(c.email)}</a>${c.emailGuess ? ' <span class="guess">pattern guess</span>' : ""}</span>` : "";
+    const email = c.email ? `<a class="btn" href="mailto:${esc(c.email)}">✉ ${esc(c.email)}${c.emailGuess ? ' <span class="guess">pattern guess</span>' : ""}</a>` : "";
     const srcs = (c.sources || []).map((u, j) => `<a href="${esc(u)}" target="_blank" rel="noopener">source ${j + 1}</a>`).join(" · ");
     return `<div class="card ${done ? "done" : ""}">
-      <div class="rank"><div class="pos">#${i + 1}</div><div class="score">${c.score}</div><span class="tier ${esc(c.tier)}">Tier ${esc(c.tier)}</span></div>
+      <div class="rank"><div class="ring ${esc(c.tier)}" style="--p:${c.score}"><span>${c.score}</span></div><div class="pos">#${i + 1}</div><span class="tier ${esc(c.tier)}">Tier ${esc(c.tier)}</span></div>
       <div>
         <div class="name">${esc(c.name)}</div>
         <div class="title">${esc(c.title)}</div>
         <div class="meta">${esc(current === "All" ? c.company + " · " : "")}${esc([c.site, c.country].filter(Boolean).join(", "))}</div>
         <div class="chips"><span class="chip">${esc(c.fn)}</span><span class="chip">${esc(c.region)}</span><span class="chip ${c.confidence === "Low" ? "low" : ""}">Confidence: ${esc(c.confidence)}</span></div>
-        <div class="why"><b>Why:</b> ${esc(c.why)}</div>
-        ${c.angle ? `<div class="why"><b>Opening angle:</b> ${esc(c.angle)}</div>` : ""}
+        <div class="why"><b>Why</b> ${esc(c.why)}</div>
+        ${c.angle ? `<div class="why"><b>Opening angle</b> ${esc(c.angle)}</div>` : ""}
         <div class="contact">
-          ${c.linkedin ? `<span>in <a href="${esc(c.linkedin)}" target="_blank" rel="noopener">LinkedIn profile</a></span>` : ""}
+          ${c.linkedin ? `<a class="btn primary" href="${esc(c.linkedin)}" target="_blank" rel="noopener">LinkedIn profile ↗</a>` : ""}
           ${email}
-          ${c.phone ? `<span>☎ ${esc(c.phone)}</span>` : ""}
+          ${c.phone ? `<span class="btn">☎ ${esc(c.phone)}</span>` : ""}
         </div>
         ${srcs ? `<div class="srcs">${srcs}</div>` : ""}
         <div class="mine">
@@ -503,6 +533,7 @@ $("#csv").addEventListener("click", () => {
   a.download = "woodsafe-key-individuals.csv"; a.click();
 });
 
+$("#stats").innerHTML = [[D.contacts.length, "people"], [D.contacts.filter(c => c.tier === "A").length, "Tier A, contact first"], [D.contacts.filter(c => c.region === "Nordics").length, "in the Nordics"], [D.companies.length, "companies"]].map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
 tabs(); render();
 </script>
 </body>
