@@ -96,7 +96,7 @@
   </div>
   <div id="company"></div>
   <div id="list"></div>
-  <p class="foot">Ranked by score (0–100): role fit for sharps and hazardous-waste containers, site relevance, buying influence, and confidence that the person is still in the role. Tier A = contact first, B = secondary route, C = fallback or referral. Click a row for the reasoning, opening angle and contact details. Emails marked "guess" are built from the company's usual address format and are not confirmed.</p>
+  <p class="foot">Ranked by score (0–100): role fit for sharps and hazardous-waste containers, site relevance, buying influence, and confidence that the person is still in the role. Tier A = contact first, B = secondary route, C = fallback or referral. Click a row for the reasoning, opening angle and contact details. No confirmed work email was found for anyone, so none are listed.</p>
 </div></main>
 <script>
 // WoodSafe key individuals. Collected 2026-11-15 via Perplexity (public LinkedIn/web data). Every person re-checked the same day against their public profile; leavers removed, changed details corrected.
@@ -396,9 +396,6 @@
       if (v.v === "CONTRADICTED") { confidence = "Low"; score = Math.max(20, score - 30); }
       const parts = name.split(" ");
       let email = v.email || "", emailGuess = false;
-      if (!email && co.domain && flag !== "x" && parts.length === 2 && /^[\p{L}-]+$/u.test(parts[0]) && /^[\p{L}'’-]+$/u.test(parts[1])) {
-        email = fold(parts[0]) + "." + fold(parts[1]) + "@" + co.domain; emailGuess = true;
-      }
       contacts.push({
         company: co.name, name, title, site, country, region, fn, score,
         tier: score >= 75 ? "A" : score >= 60 ? "B" : "C",
@@ -487,7 +484,7 @@ function render() {
     return main + `<tr class="detail"><td colspan="${span}"><div class="grid">
       ${g("Why this person", esc(c.why))}
       ${g("Opening angle", esc(c.angle))}
-      ${g("Email", c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>${c.emailGuess ? '<span class="guess">guess</span>' : ""}` : "Not public")}
+      ${g("Email", c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : "")}
       ${g("Phone", esc(c.phone))}
       ${g("Location", esc([c.site, c.country].filter(Boolean).join(", ")) + " · " + esc(c.region))}
       ${g("Confidence", esc(c.confidence))}
