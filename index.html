@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WoodSafe – Key Individuals</title>
+<style>
+  :root {
+    --bg: #f5f6f3; --panel: #ffffff; --ink: #1c2420; --muted: #66706a; --line: #dfe3dc;
+    --accent: #2f6b4a; --accent-soft: #e4efe7;
+    --a: #1f7a4d; --b: #b07a14; --c: #7b8480;
+    --warn: #a4521b; --warn-soft: #fbeee2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141815; --panel: #1d221f; --ink: #e8ece8; --muted: #9aa49e; --line: #2e3531;
+      --accent: #7cc49a; --accent-soft: #23342a;
+      --a: #6fcf97; --b: #e0b354; --c: #8d9692;
+      --warn: #e7a06a; --warn-soft: #3a2a1d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+  header { padding: 20px 28px 0; }
+  h1 { font-size: 20px; margin: 0 0 2px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 16px 28px 0; }
+  .tab { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 7px 13px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 14px; }
+  .tab .n { color: var(--muted); font-size: 12px; margin-left: 5px; }
+  .tab.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .tab.on .n { color: inherit; opacity: .8; }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 14px 28px; position: sticky; top: 0; background: var(--bg); z-index: 5; border-bottom: 1px solid var(--line); }
+  .bar input[type=search], .bar select { font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
+  .bar input[type=search] { flex: 1 1 220px; min-width: 180px; }
+  .bar button { font: inherit; font-size: 14px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); cursor: pointer; }
+  .bar label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  main { padding: 18px 28px 60px; max-width: 1100px; }
+  .company { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; }
+  .company h2 { margin: 0 0 6px; font-size: 17px; }
+  .company dl { display: grid; grid-template-columns: 150px 1fr; gap: 4px 14px; margin: 0; font-size: 13.5px; }
+  .company dt { color: var(--muted); }
+  .company dd { margin: 0; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; display: grid; grid-template-columns: 54px 1fr; gap: 14px; }
+  .card.done { opacity: .6; }
+  .rank { text-align: center; }
+  .rank .pos { font-size: 12px; color: var(--muted); }
+  .rank .score { font-size: 21px; font-weight: 650; line-height: 1.1; }
+  .tier { display: inline-block; font-size: 11px; font-weight: 650; border-radius: 5px; padding: 1px 6px; margin-top: 4px; color: var(--bg); }
+  .tier.A { background: var(--a); } .tier.B { background: var(--b); } .tier.C { background: var(--c); }
+  .name { font-size: 16px; font-weight: 650; }
+  .title { color: var(--ink); }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .chip.low { background: var(--warn-soft); color: var(--warn); }
+  .why { font-size: 14px; margin: 6px 0; }
+  .why b { font-weight: 600; }
+  .contact { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13.5px; margin-top: 8px; }
+  .contact a { color: var(--accent); text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+  .guess { color: var(--warn); font-size: 12px; }
+  .srcs { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .srcs a { color: var(--muted); }
+  .mine { display: flex; gap: 10px; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .mine select, .mine input { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--ink); }
+  .mine input { flex: 1; }
+  .empty { color: var(--muted); padding: 30px 0; }
+  .legend { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+  @media (max-width: 640px) { .company dl { grid-template-columns: 1fr; } header, .tabs, .bar, main { padding-left: 14px; padding-right: 14px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>WoodSafe – Key Individuals</h1>
+  <div class="sub" id="sub"></div>
+</header>
+<div class="tabs" id="tabs"></div>
+<div class="bar">
+  <input type="search" id="q" placeholder="Search name, title, site…">
+  <select id="fn"><option value="">All functions</option></select>
+  <select id="region"><option value="">All regions</option></select>
+  <select id="tier"><option value="">All tiers</option><option>A</option><option>B</option><option>C</option></select>
+  <label><input type="checkbox" id="hideDone"> Hide contacted</label>
+  <button id="csv">Export CSV</button>
+</div>
+<main>
+  <div id="company"></div>
+  <p class="legend">Score 0–100 = role fit for sharps and hazardous-waste containers + site relevance + buying influence + confidence the person is still in the role. Tier A = contact first, B = good secondary route, C = fallback or referral. Emails marked "pattern guess" are built from the company's usual address format and are not confirmed.</p>
+  <div id="list"></div>
+</main>
+<script>
+// WoodSafe key individuals. Collected 2026-11-15 via Perplexity (public LinkedIn/web data). Every person re-checked the same day against their public profile; leavers removed, changed details corrected.
+// Row: [name, title, site, country, region, function, score, confidence, why, linkedinSlug, flags]
+// flags: "x" = no email guess (contractor, initial-only name, or uncertain employer)
+(function () {
+  const N = "Nordics", U = "UK & Ireland", E = "Continental Europe", G = "Global";
+  const W = "EHS & Waste", S = "Sustainability", P = "Procurement", L = "Lab & Facilities";
+
+  const companies = [
+    { name: "AstraZeneca", domain: "astrazeneca.com", pattern: "firstname.lastname@astrazeneca.com",
+      sites: "Södertälje (manufacturing) and Gothenburg/Mölndal (R&D) in Sweden; Macclesfield, Cambridge, Speke (UK); Nijmegen (NL); Dunkirk (FR)",
+      fit: "Public target of 50% waste circularity by 2030 and a plastics hierarchy (eliminate, reduce, substitute). Large Swedish lab and production footprint close to FrostGreen.",
+      waste: "Sodexo runs facilities management in Sweden and the UK, including waste handling. NG Nordic holds the environmental-services agreement at Södertälje (hazardous and pharma waste, container sanitisation/reuse). Cambridge lab services run through Avantor/VWR.",
+      entry: "Start in Sweden: the hazardous-waste logistics owner in Gothenburg and the regional SHE and circularity leads in Södertälje. Sodexo and NG Nordic are worth approaching in parallel, since they physically handle the containers.",
+      phone: "Södertälje +46 8 553 260 00 · Global HQ +44 20 3749 5000" },
+    { name: "Novo Nordisk", domain: "", pattern: "",
+      sites: "Bagsværd (HQ), Kalundborg, Måløv (R&D), Hillerød, Gentofte, Gladsaxe (Denmark); Chartres (FR); Athlone (IE)",
+      fit: "Circular for Zero strategy: zero production waste to landfill by 2030 and 30% lower plastic footprint per patient by 2033. A fossil-free sharps container fits that story directly.",
+      waste: "Novo Nordisk has its own Waste Operations team in Bagsværd. ISS delivers facilities services at Danish sites. The hazardous/sharps waste contractor is not public.",
+      entry: "The Waste Operations manager in Bagsværd is the single best contact. Back it with the Circular for Zero team and Laboratory Sourcing.",
+      phone: "+45 4444 8888 (Bagsværd HQ). Email addresses use employee initials (for example xxxx@novonordisk.com), so they cannot be guessed from names." },
+    { name: "Sanofi", domain: "sanofi.com", pattern: "firstname.lastname@sanofi.com",
+      sites: "France (Vitry-sur-Seine, Marcy-l'Étoile, Val-de-Reuil, Le Trait), Frankfurt (DE), Geel (BE), Waterford (IE), Anagni (IT), Budapest (HU). Nordics are commercial offices only.",
+      fit: "Planet Care programme: 30% lower waste-impact index by 2030, eco-design and circular-economy teams, and a My Green Lab programme across R&D sites.",
+      waste: "Waste vendors are chosen per country and site. Sanofi has a regional category-buyer role for Waste & Remediation in Europe, but its former holder moved to Opella and the current one is not public.",
+      entry: "Go to the R&D HSE and sustainable-workplace leads and the lab-supplies buyer first, then site HSE heads at vaccine and injectables sites (most sharps). Ask them who now buys waste services.",
+      phone: "+33 1 53 77 40 00 (Paris)" },
+    { name: "GSK", domain: "gsk.com", pattern: "firstname.lastname@gsk.com",
+      sites: "Stevenage and Ware (R&D), Barnard Castle, Montrose, Irvine, Worthing (UK); Wavre/Rixensart (BE vaccines); Siena/Rosia, Parma (IT); Marburg, Dresden (DE)",
+      fit: "Target of zero operational waste by 2030, including 20% less routine hazardous and non-hazardous waste. Big vaccines and R&D footprint means high sharps volumes.",
+      waste: "Mitie holds the integrated FM contract for eight UK and Ireland manufacturing sites; EMCOR UK runs FM at Stevenage; PerkinElmer runs lab services at Stevenage. Waste contractors are site-level.",
+      entry: "UK R&D EHS lead (owns waste for Stevenage and Ware), the global lab-supplies category lead in Wavre, and the facilities-services procurement director.",
+      phone: "+44 20 8047 5000 (UK corporate)" },
+    { name: "MSD", domain: "msd.com", pattern: "firstname.lastname@msd.com",
+      sites: "Ireland (Carlow, Ballydine, Brinny, Dunboyne, Swords); Netherlands (Haarlem, Oss, Boxmeer); Heist (BE); Krems (AT); Burgwedel (DE); Lucerne (CH). Nordic offices in Stockholm and Copenhagen.",
+      fit: "Waste goals focus on diversion from landfill and incineration without energy recovery. Vaccine and biologics sites plus Animal Health generate steady sharps volumes.",
+      waste: "Sodexo runs facilities for MSD Sweden and MSD Denmark. Waste suppliers are site- and country-specific; Global Site Services procurement covers waste management.",
+      entry: "Global Site Services procurement (two named category owners in the Benelux) and the regional EHS director, then Irish site EHS directors.",
+      phone: "UK +44 20 8154 8000 · Switzerland +41 58 618 30 30" },
+    { name: "Lonza", domain: "lonza.com", pattern: "firstname.lastname@lonza.com",
+      sites: "Visp, Basel, Stein (CH); Slough (UK); Porriño (ES); Geleen/Maastricht (NL); Kouřim (CZ); Cologne (DE); Colmar (FR); Bornem (BE)",
+      fit: "Lonza openly says single-use technology increases its plastic waste and has no quantified plastic target yet, so a ready substitution is easy to position. Waste intensity target (minus 50% by 2030) already met.",
+      waste: "Visp runs its own waste and wastewater treatment with a dedicated Material Flow and Waste Management team. Other sites use local approved contractors.",
+      entry: "The Visp waste management head and waste manager, then site sustainability leads (Visp, Slough) and the EMEA lab-supplies buyer in Slough.",
+      phone: "Basel +41 61 316 81 11 · Visp +41 27 948 51 11 (contact.visp@lonza.com)" },
+    { name: "AbbVie", domain: "abbvie.com", pattern: "firstname.lastname@abbvie.com",
+      sites: "Ludwigshafen (DE, R&D and manufacturing); Sligo, Cork, Westport, Dublin Clonshaugh (IE); Campoverde di Aprilia (IT). Nordic office in Stockholm.",
+      fit: "Target of zero waste to landfill by 2035 and an internal 'Team Evergreen' sustainability network. No quantified plastic target, so there is room for a concrete proposal.",
+      waste: "Waste contractors are not public. CBRE delivers site services in Ludwigshafen; integrated facilities management is led from Ireland.",
+      entry: "Ludwigshafen EHS and sustainability leads, the waste supervisor in Campoverde, and the Irish site EHS managers. Procurement entry via the OUS Facilities category manager.",
+      phone: "Ludwigshafen +49 621 5890 · Sweden +46 8 684 44 600 (info@abbvie.se)" },
+  ];
+
+  const rows = {
+    "AstraZeneca": [
+      ["Tomas Svedjenäs", "Logistics Developer, Environmental Logistics", "Gothenburg (Mölndal)", "Sweden", N, W, 93, "High", "Explicitly responsible for safe hazardous-waste handling and its procedures at the Gothenburg R&D site. Closest person to the actual container choice.", "tomas-svedjen%C3%A4s-2039751ba"],
+      ["Sylvia Ekström", "Associate Director and SHE Lead, Site Support & SHE", "Södertälje", "Sweden", N, W, 88, "High", "SHE lead for site support at AstraZeneca's largest production site; waste handling routines sit in this function.", "sylvia-ekstr%C3%B6m-aa815898"],
+      ["Jonas Fröberg", "Sweden and Regional SHE Director", "Södertälje", "Sweden", N, W, 87, "High", "Leads safety, health and environment across all Swedish sites. Senior sponsor who can mandate a container standard.", "jonas-froberg"],
+      ["Emma Lindahl", "Regional Circularity Lead; Associate Director, Sustainability & Circularity", "Södertälje", "Sweden", N, S, 86, "High", "Owns circularity for Sweden Operations and has a plastics and packaging background. Natural internal champion for a bio-based container.", "emma-lindahl"],
+      ["Marika Du Rietz", "Regional Sustainability Lead; Director Sustainability, Sweden Operations", "Södertälje", "Sweden", N, S, 84, "High", "Heads sustainability for Swedish production, including plastic recycling initiatives.", "marika-du-rietz-0788933"],
+      ["Håkan Sjöberg", "Director, Procurement Energy & Utilities", "Södertälje", "Sweden", N, P, 83, "High", "Procurement lead whose categories include environmental services and site sustainability programmes. Closest buyer to waste services in Sweden.", "hakan-sjoberg-74434811"],
+      ["Walter Deltin", "Sustainability Lead, AstraZeneca Biologics", "Södertälje", "Sweden", N, S, 80, "High", "Leads energy, water and waste-management initiatives at the biologics plant, where sharps and biohazard waste arise.", "walter-deltin"],
+      ["Fredrik Hellman", "Head of Environment, AstraZeneca Sweden", "Gothenburg", "Sweden", N, W, 79, "Medium", "Environment head for all Swedish operations; previously accountable for the global natural-resources (waste) strategy.", "fredrik-hellman-2b12602"],
+      ["Søren Bak", "Environment, Health and Safety Manager", "Gothenburg (Mölndal)", "Sweden", N, W, 77, "High", "SHE manager supporting pharmaceutical development labs in Gothenburg.", "s%C3%B8ren-bak-5010271"],
+      ["Elsa Eriksson", "Regional Circularity Lead, Sweden Operations", "Södertälje", "Sweden", N, S, 74, "Medium", "Same circularity team as Emma Lindahl; title overlap suggests a shared or handed-over role.", "elsa-eriksson-23629519b"],
+      ["Emelie Junfors", "Associate Regional Circularity Lead, One Campus & SHE", "Södertälje", "Sweden", N, S, 73, "High", "Hands-on circularity role inside the SHE organisation; good working-level contact.", "emelie-junfors-920252255"],
+      ["Liane Haeffler", "SHE Director", "Gothenburg (Mölndal)", "Sweden", N, W, 73, "Medium", "Senior SHE role at the Gothenburg R&D site; scope not fully public.", "liane-haeffler-9767355"],
+      ["Danielle Paterson", "Senior Scientist; My Green Lab coordinator", "Gothenburg", "Sweden", N, L, 72, "High", "Coordinates the site's My Green Lab certification, where lab plastic and waste choices are scored.", "daniellepaterson"],
+      ["Jakob Alm", "Senior SHE Advisor", "Gothenburg (Mölndal)", "Sweden", N, W, 70, "High", "Working-level SHE advisor at the R&D site.", "jakob-alm-22061b55"],
+      ["Artur Gunnarsson", "Director of Facilities Management", "Gothenburg (Mölndal)", "Sweden", N, L, 70, "High", "Runs outsourced facilities delivery at the R&D site, which includes waste handling through Sodexo.", "artur-gunnarsson-541b8518"],
+      ["Catharina Dahl", "Facilities Director", "Gothenburg", "Sweden", N, L, 66, "High", "Facilities leadership at the Gothenburg site.", "dahl-catharina-b815617a"],
+      ["Zdenko Zecevic", "Director, Facilities Management Hard Service", "Södertälje", "Sweden", N, L, 62, "High", "Facilities management lead in Södertälje; hard services, so an indirect route.", "zdenko-zecevic-80b35a20a"],
+      ["Bernardo Herrera", "Business Developer, Sustainability Lead, Site API", "Södertälje", "Sweden", N, S, 66, "High", "Site-level sustainability lead for the API plant.", "bernardo-hp17"],
+      ["Sophia Hultgren", "Laboratory Manager, cell lab operations (Avantor, on site at AstraZeneca)", "Gothenburg (Mölndal)", "Sweden", N, L, 65, "High", "Runs AstraZeneca cell labs as an employee of the lab-services contractor Avantor/VWR. Direct user of sharps and biohazard containers.", "sophia-hultgren", "x"],
+      ["Sina Amirnezhad", "Laboratory Manager (VWR/Avantor, on site at AstraZeneca)", "Gothenburg", "Sweden", N, L, 64, "High", "Lab manager with safety and compliance responsibility, employed by the lab-services contractor VWR/Avantor.", "sina-amirnezhad", "x"],
+      ["Adrian Montgomery", "Director, Head of Operations, Animal Science & Technologies", "Gothenburg", "Sweden", N, L, 63, "High", "Oversees five animal-science laboratories, which are heavy sharps users.", "adrian-montgomery"],
+      ["Markus Magnusson", "Facilities Manager", "Gothenburg", "Sweden", N, L, 60, "High", "Site facilities manager.", "markus-magnusson-974477105"],
+      ["Stefan Fredriksson Bohm", "Facility Manager", "Södertälje", "Sweden", N, L, 58, "High", "Site facility manager in Södertälje.", "stefan-fredriksson-bohm-7351a690"],
+      ["Christina Svensson", "Sustainability Coordinator", "Södertälje", "Sweden", N, S, 52, "Low", "Local sustainability coordinator; profile not confirmed.", ""],
+      ["Katie Macfarlane", "Associate Director, Contract Management", "Cambridge", "United Kingdom", U, P, 78, "High", "Governs the waste-management supplier contracts for Cambridge. Decides what the waste contractor supplies.", "katie-macfarlane"],
+      ["Matt Shaughnessy", "Head of Operations Sustainability; Executive Director, Site Sustainability", "Macclesfield", "United Kingdom", U, S, 74, "High", "Accountable for the sustainability strategy of all AstraZeneca manufacturing sites.", "matt-shaughnessy-a122bb30"],
+      ["Laurent Seurin", "Senior Director SHE, Cambridge Operations; UK SHE Lead", "Cambridge", "United Kingdom", U, W, 74, "High", "Top SHE role for UK and the Cambridge R&D campus.", "laurent-seurin-36968a4"],
+      ["Andrew King", "Senior Director, Strategy & PMO, Operations Sweden & EMEA Supply; My Green Lab enterprise lead", "Macclesfield", "United Kingdom", U, S, 72, "High", "Leads the company-wide My Green Lab programme and has a Sweden Operations remit.", "andrew-king-3b8828a1"],
+      ["Andrew Sharp", "Procurement Manager EMEA, Facilities Management", "Macclesfield", "United Kingdom", U, P, 72, "High", "Buys facilities management for EMEA, the contract under which waste handling is delivered.", "andrew-sharp-mcips-b944b92"],
+      ["Rachel Eyre", "Associate Director, Sustainable Procurement, Supplier Engagement", "Lisbon", "Portugal", E, P, 66, "High", "Runs supplier sustainability engagement; a route in for a supplier with a strong footprint claim.", "rachel-eyre-40b880159"],
+      ["Krystal Labonte", "Senior Director, Lab Operations (Oncology)", "Cambridge, Massachusetts", "United States", G, L, 45, "High", "Moved in November 2026 to a US lab-operations role; previously led scientific services at Cambridge, UK. Referral only.", "krystal-labonte-69597574"],
+      ["Peter Davies", "Associate Director, Sustainability, Global Supply Chain", "Macclesfield", "United Kingdom", U, S, 62, "High", "Works on circular take-back programmes.", "peter-davies-32702291"],
+      ["Caireen Hargreaves", "SHE Lead / Associate Director", "Macclesfield", "United Kingdom", U, W, 64, "High", "SHE lead at the Macclesfield manufacturing campus.", "caireenhargreaves"],
+      ["Phillip Krone", "Senior Lab Manager (VWR/Avantor, on site at AstraZeneca)", "Cambridge", "United Kingdom", U, L, 62, "High", "Lab manager with a sustainability and improvement remit, employed by the lab-services contractor VWR/Avantor.", "phillip-krone-268736193", "x"],
+      ["John Riordan", "Laboratory Manager, Biopharmaceutical Development", "Cambridge", "United Kingdom", U, L, 60, "High", "Runs SHE inspections and My Green Lab recertification for his labs.", "john-e-riordan"],
+      ["Charlotte Bygraves", "Laboratory Manager (Avantor, on site at AstraZeneca)", "Cambridge", "United Kingdom", U, L, 58, "High", "Lab-level sustainability champion in the Discovery Centre, employed by the lab-services contractor Avantor.", "charlotte-bygraves-85b33789", "x"],
+      ["Gary Dugdale", "Senior Director, Built Environment & Sustainability, Global Engineering", "Macclesfield", "United Kingdom", U, S, 52, "High", "Engineering-side sustainability; indirect for consumables.", "gary-dugdale-fiet-5b169931"],
+      ["Duygu Yüksel", "Director, Engineering & SHE", "Nijmegen", "Netherlands", E, W, 62, "High", "Site SHE head at the Nijmegen plant.", "duygu-y%C3%BCksel-deniz"],
+    ],
+    "Novo Nordisk": [
+      ["Charlotte Ahrens", "Manager, Novo Nordisk Waste Operations", "Bagsværd", "Denmark", N, W, 96, "High", "Manages the company's own waste operations team at headquarters. The clearest owner of waste containers and handling.", "charlotte-ahrens-a604947"],
+      ["Marthiin Halbye", "Logistics Coordinator, Waste Management", "Bagsværd", "Denmark", N, W, 86, "High", "Day-to-day waste logistics in the Waste Operations team; knows current containers and suppliers.", "marthiin-halbye-b52a0b3"],
+      ["Leticia Zavala", "Environmental Specialist (formerly Senior Environmental Partner)", "Copenhagen", "Denmark", N, S, 85, "High", "Environmental role in the Circular for Zero organisation; her earlier partner role covered waste avoidance across eight international sites. Title changed in September 2026.", "leticia-zavala"],
+      ["Tom Bindslev Mcpherson", "Global Environmental Lead, Circular for Zero Roadmaps", "Copenhagen", "Denmark", N, S, 82, "High", "Runs execution of the Circular for Zero site roadmaps, where plastic and waste actions are chosen.", "tom-bindslev-mcpherson-28a564222"],
+      ["Frederick Steenfeldt Skov", "Interim Associate Director, Laboratory Sourcing", "Copenhagen", "Denmark", N, P, 82, "High", "Leads sourcing of laboratory categories, where sharps containers are normally bought.", "frederick-steenfeldt-skov-9a712471"],
+      ["Stine Platou Mikkelsen", "Director, Circular for Zero Strategy PMO", "Bagsværd", "Denmark", N, S, 80, "High", "Heads the programme office for the environmental strategy; senior sponsor.", "stine-platou-mikkelsen-9528965"],
+      ["Line Holst Algren", "Sustainability Program Manager", "Copenhagen", "Denmark", N, S, 78, "High", "Manages site targets including zero waste to landfill across production sites.", "line-holst-algren-37a1157a"],
+      ["Christina Kobbernagel", "EHS Partner", "Kalundborg", "Denmark", N, W, 78, "High", "EHS partner at Novo Nordisk's largest production site.", "christina-kobbernagel-7631569"],
+      ["Christina Mark", "Senior Manager, Environmental Projects & Support, Aseptic Manufacturing", "Bagsværd", "Denmark", N, W, 76, "High", "Environmental lead for aseptic (injectables) manufacturing, a major sharps source.", "christinamark1986"],
+      ["Andreas Herfelt", "Environmental Lead", "Gladsaxe", "Denmark", N, W, 74, "High", "Site-level environmental lead.", "andreas-herfelt-56936127"],
+      ["Rias Al Ajba", "Associate Category Lead, Security Services & Facility Management", "Copenhagen", "Denmark", N, P, 74, "High", "Procurement owner for facility management, the contract covering waste handling by ISS.", "riasalajba"],
+      ["Per Løcke", "Manager, Service Centre Måløv", "Måløv", "Denmark", N, L, 73, "Medium", "Runs site services at the R&D campus and previously worked in the Circular for Zero EHS team.", "per-l%C3%B8cke-208701101"],
+      ["Tilde Rye Andersen", "Health & Safety Partner, Site Gentofte", "Gentofte", "Denmark", N, W, 72, "High", "Site health and safety partner; former EHS manager for Gentofte.", "tilderyeandersen"],
+      ["Jens Antonsen", "Senior Manager, Facility", "Hillerød", "Denmark", N, L, 72, "High", "Leads facility at the Hillerød production site; his earlier role also covered EHS.", "jens-antonsen-2b928510"],
+      ["Sebastian Wagner-Crafack", "Associate Director, PMO & EHS", "Kalundborg", "Denmark", N, W, 71, "High", "EHS leadership for Kalundborg and Kirke Værløse.", "sebastian-wagner-crafack-a924a4b1"],
+      ["Nanja Hedal Kløverpris", "Associate Director, Sustainability & Operational Excellence, Final Product Development", "Hillerød", "Denmark", N, S, 70, "High", "Sustainability lead in device and final-product development.", "nanjahedal"],
+      ["Helene Hartelius", "Health & Safety Partner", "Hillerød", "Denmark", N, W, 68, "High", "Site health and safety partner.", "helene-hartelius-97610959"],
+      ["Malte Paulsen", "Director, Strategy and Operations, R&ED Måløv", "Måløv", "Denmark", N, L, 68, "High", "Heads operations for the research labs in Måløv.", "malte-paulsen-0bab2470"],
+      ["Alexandre Vanoosthuyse", "Project Manager, R&ED Måløv Operations", "Måløv", "Denmark", N, L, 64, "High", "Laboratory facilities and operations at the research site.", "alexandre-vanoosthuyse"],
+      ["Hans-Henrik Stensaker", "Director, Research Procurement", "Copenhagen", "Denmark", N, P, 68, "High", "Leads research procurement; formerly headed Laboratory & Site Procurement.", "hanshenrikstensaker"],
+      ["Claus Bjørnlund Liegl", "Procurement Director, Europe & Canada", "Copenhagen", "Denmark", N, P, 66, "High", "Regional procurement head, former global facilities category manager and Sustainable Procurement Pledge ambassador.", "liegl"],
+      ["Niels Otterstrøm Jensen", "Project Director, Head of ReMed Programme", "Copenhagen", "Denmark", N, S, 64, "High", "Leads the take-back programme for used pens (plastic waste); strong interest in circular plastics.", "niels-otterstr%C3%B8m-jensen-3790862"],
+      ["Janni Andersen", "VP Health & Safety", "Kalundborg", "Denmark", N, W, 64, "High", "Most senior health and safety leader in Denmark; sponsor level.", "andersenjanni"],
+      ["Silvia Candotti", "Environmental Specialist", "Bagsværd", "Denmark", N, W, 62, "High", "Environmental specialist at headquarters.", "silvia-candotti"],
+      ["Magnus S Klampe", "Category Manager, outsourced GxP services", "Copenhagen", "Denmark", N, P, 60, "High", "Buys cleaning, gowning and sterilisation services; adjacent category.", "magnusklampe"],
+      ["Caroline Askheim Trabado", "Facility Design & Sustainability Lead", "Hillerød", "Denmark", N, S, 58, "High", "Sustainability in facility design.", "caroline-askheim-trabado-687425152"],
+      ["Mikala Skovgaard", "Operations Manager", "Bagsværd", "Denmark", N, L, 56, "High", "Operations manager at headquarters site.", "mikala-skovgaard"],
+      ["Paulina Laudrup", "Senior Director, Regional Sourcing", "Copenhagen", "Denmark", N, P, 56, "Medium", "Previously led lab consumables sourcing and its sustainability agenda.", "paulina-laudrup"],
+      ["Christian Bull Nielsen", "Manager (former EHS Partner, Gentofte and Hillerød)", "Gentofte", "Denmark", N, W, 52, "Medium", "Earlier EHS partner for two sites; current remit unclear.", "christankennethnielsen"],
+      ["Conor O'Riordan", "Head of EHS", "Athlone", "Ireland", U, W, 70, "High", "EHS head at the Athlone manufacturing site.", "conor-o-riordan-1ab8a513"],
+      ["Virginie Randjelovic", "Environment Coordinator", "Chartres", "France", E, W, 68, "High", "Environment coordinator at the Chartres injectables plant.", "virginie-randjelovic-57b810189"],
+      ["Elise Genet", "HSE Engineer", "Chartres", "France", E, W, 62, "High", "HSE engineer at Chartres.", "genetelise"],
+    ],
+    "Sanofi": [
+      ["Astrid Coppens", "Global Head of HSE R&D", "Ghent", "Belgium", E, W, 84, "High", "Sets HSE practice for all R&D laboratories, the main sharps users outside production.", "astrid-coppens-53666221"],
+      ["Yvonne Kirchhein", "Global Head, Sustainable Workplace Strategy", "Frankfurt", "Germany", E, S, 83, "High", "Leads sustainability for offices and R&D sites including waste; previously ran the global My Green Lab programme.", "yvonne-kirchhein-782643a3"],
+      ["Aboubaker Amrani", "Global Category Buyer, Lab Supplies", "Barcelona", "Spain", E, P, 82, "High", "Owns the global lab-supplies category, where sharps containers are sourced.", "aboubaker-amrani"],
+      ["Jose-Francisco Vallejo Carrera", "Global Head of Environment & Sustainability", "Paris", "France", E, S, 80, "High", "Leads environment strategy including waste and eco-design. Sponsor level.", "jose-francisco-vallejo-carrera-49756526"],
+      ["Riccardo Cervone", "Head of Safety, Environment, Health & Hygiene; HSE & Waste Treatment", "Anagni", "Italy", E, W, 79, "High", "HSE head with explicit waste-treatment responsibility at the Anagni injectables plant.", "riccardo-cervone-82b517b7"],
+      ["Aude Arkam", "Head of Eco Design & Circular Economy", "Paris", "France", E, S, 77, "High", "Leads circular-economy work; likely champion for a bio-based material.", "aude1arkam1strat1development"],
+      ["Jean-marc Nazaret", "Head of Procurement Sustainability", "Lyon", "France", E, P, 76, "High", "Runs sustainable procurement across indirect categories together with HSE.", "jean-marc-nazaret-02821865"],
+      ["Ömer Döne", "Global Head of Sustainable Workplace Certifications", "Paris", "France", E, S, 75, "High", "Runs R&D-site sustainability certifications and is a My Green Lab ambassador.", "%C3%B6mer-d%C3%B6ne-15500249"],
+      ["Jan Melis", "Site HSE Head", "Geel", "Belgium", E, W, 75, "High", "HSE head at the Geel biologics site.", "jan-melis-9a32b730"],
+      ["Silke Grueneberg", "Head HSE, Fill & Finish Pharma", "Frankfurt", "Germany", E, W, 75, "High", "HSE head for injectables fill and finish in Frankfurt.", "silke-grueneberg-0a21b16"],
+      ["Hervé Penet", "HSE Head (Vaccines)", "Val-de-Reuil", "France", E, W, 74, "High", "HSE head at a major vaccines site.", "dr-ing-herv%C3%A9-penet-804976231"],
+      ["Jochen Hachtel", "Head of R&D HSE Support and Systems", "Frankfurt", "Germany", E, W, 73, "High", "R&D HSE lead for the Frankfurt research site.", "jochen-hachtel-4621881a5"],
+      ["Julien Perinat", "HSE Head (acting)", "Vitry-sur-Seine", "France", E, W, 70, "High", "Acting HSE head at the Vitry biologics and R&D site.", "julien-perinat-89b471106"],
+      ["Fabrizio Raparelli", "Global Planet Care Leader, EMEA & Asia", "Italy", "Italy", E, S, 70, "High", "Implements the Planet Care programme at manufacturing sites in EMEA.", "fabrizio-raparelli-3643438"],
+      ["Cormac O'Meara", "Head of Facility Management, Clean Utilities & Sustainability", "Waterford", "Ireland", U, L, 70, "High", "Combines facilities and sustainability at the Waterford injectables site.", "cormac-o-meara-95218269"],
+      ["Colm Murphy", "Head of Environmental Sustainability, Planet Care Impact", "Dublin", "Ireland", U, S, 68, "High", "Leads the Planet Care environmental agenda and disclosures.", "colm-m-murphy"],
+      ["Katrien Luyts", "Head of Safety, Health & Hygiene", "Geel", "Belgium", E, W, 68, "High", "Safety and hygiene lead at Geel.", "katrien-luyts-56695588"],
+      ["Stefano Sciarra", "HSE & Security Manager", "Anagni", "Italy", E, W, 67, "High", "HSE manager at Anagni.", "stefanosciarra"],
+      ["Simone Ciucci", "Head of Clean Utilities & Sustainability", "Anagni", "Italy", E, S, 64, "High", "Site sustainability lead at Anagni.", "simoneciucci"],
+      ["Séverine Grangier", "HSE Process Excellence Manager", "Marcy-l'Étoile", "France", E, W, 66, "High", "HSE role at the main vaccines site; the site HSE head is not publicly identified.", "severine-grangier-51b616b1"],
+      ["Mathieu Durand", "HSES Projects Manager", "Marcy-l'Étoile", "France", E, W, 62, "Medium", "HSE projects at Marcy-l'Étoile; former deputy HSE director.", "mathieu-durand-687b7684"],
+      ["Sarah Arias Zeballos", "Global Eco-design Leader", "Paris", "France", E, S, 62, "High", "Leads product and packaging eco-design.", "sarah-arias", "x"],
+      ["Csonka Dániel", "Facility, Health, Safety, Environment & Fleet Manager", "Budapest", "Hungary", E, L, 60, "Medium", "Facility and HSE manager for the Budapest office hub.", "csonka-daniel-70831838", "x"],
+      ["Pia Lemström", "Workplace Experience Lead Nordics", "Helsinki (covers Sweden and Denmark)", "Finland", N, L, 60, "Medium", "Nordic workplace, safety and fleet lead. Only Nordic contact found; Sanofi's Nordic sites are offices, so volume is small.", "pialemstrom"],
+      ["Kealan O'Keeffe", "Head of Security, HSE", "Waterford", "Ireland", U, W, 58, "High", "Security-focused HSE partner at Waterford.", "kealan-o-keeffe-0bb1a31ab"],
+      ["Pierre Lamy", "HSE Business Partner, Industrial Affairs", "Paris region", "France", E, W, 58, "Medium", "HSE partner for manufacturing; site not specified.", "pierrelamy"],
+      ["Philippe Naudin", "Regional Category Manager, Construction France", "Gentilly", "France", E, P, 52, "High", "Former global buyer for Waste & Remediation; useful for a referral.", "philippe-naudin-87545a267"],
+      ["Giannis Kourousias", "Global Head of Environmental Responsibility", "France", "France", E, S, 56, "Medium", "Senior environment role; scope unclear from public data.", "gianniskourousias"],
+    ],
+    "GSK": [
+      ["Mark Mansell", "UK EHS&S R&D Regional Lead", "Stevenage and Ware (UK R&D)", "United Kingdom", U, W, 90, "High", "Leads environment, health, safety and sustainability for UK R&D, explicitly including waste management.", "mark-mansell-b9164a43"],
+      ["Sophie L'Hôte", "Global Procurement Category Lead, Lab Supplies", "Wavre", "Belgium", E, P, 86, "High", "Owns the global lab supplies and consumables category.", "sophievf", "x"],
+      ["Gabriella Mierzwa", "Procurement Director, Facilities Services (Global)", "London", "United Kingdom", U, P, 80, "High", "Global procurement owner for facilities services, the contracts that include waste handling.", "gabimierzwa"],
+      ["Bryn Griffiths", "EHS Lead, Ware R&D", "Ware", "United Kingdom", U, W, 79, "High", "Site EHS lead with waste-minimisation experience.", "bryn-griffiths"],
+      ["Kunhal Lakhiani", "Director, Environment, Health & Safety", "Worthing", "United Kingdom", U, W, 77, "High", "EHS director with waste-management scope at the Worthing manufacturing site.", "kunhal-lakhiani-615b9b47"],
+      ["Giulia Usai", "Senior Director, Procurement Sustainability CoE", "London", "United Kingdom", U, P, 75, "High", "Heads the procurement sustainability centre of excellence.", "giulia-usai-2991942a"],
+      ["Pierpaolo Giannini", "EHS Manager, Operations, Engineering & Technical Safety", "Siena / Rosia", "Italy", E, W, 75, "Medium", "Vaccines-site EHS manager whose role also supports Norway, Sweden, Finland and Denmark. Only Nordic link found.", "pierpaolo-giannini-15491036"],
+      ["Cally Read", "EHS Manager, Chemical & Industrial Hygiene", "Stevenage", "United Kingdom", U, W, 74, "High", "EHS manager at the main UK research site.", "cally-read-79b59b75"],
+      ["Joanna Gosling", "Senior Manager Procurement, Facilities, Real Estate & Fleet", "United Kingdom", "United Kingdom", U, P, 73, "High", "Working-level buyer for facilities management.", "joanna-gosling-mcips-071ab516"],
+      ["Tom Newbigging", "Acting Senior Director & Head of Procurement Sustainability", "London", "United Kingdom", U, P, 72, "High", "Leads sustainable sourcing.", "tom-newbigging-15862aa6"],
+      ["James Hillyard", "Satellite Site EHS Lead", "Stevenage", "United Kingdom", U, W, 70, "High", "EHS lead for Stevenage satellite sites.", "james-hillyard-cmiosh-8b2b3591"],
+      ["James Barlow", "Director, Environment, Health & Safety", "UK manufacturing site", "United Kingdom", U, W, 68, "High", "Site-level EHS and sustainability director.", "jbarlow1"],
+      ["Tuhin Ali", "Lab Management Specialist (PerkinElmer, on site at GSK)", "Stevenage", "United Kingdom", U, L, 66, "High", "Runs day-to-day lab operations and supplies at Stevenage for GSK's lab-services contractor.", "alituhin", "x"],
+      ["Ismail Ahmed", "EHS Third Party Systems Manager", "United Kingdom", "United Kingdom", U, W, 62, "High", "Oversees EHS for third-party suppliers.", "ismail-ahmed-513887123"],
+      ["Richard Fletcher", "Interim EHS Manager (also Senior EHS Advisor, Barnard Castle)", "Worthing", "United Kingdom", U, W, 66, "High", "Interim EHS manager at Worthing since June 2026; still lists his Barnard Castle advisor role.", "richard-fletcher-certiosh-dipnebosh-80a367111"],
+      ["Lisa Ellis", "EHS Advisor", "Montrose", "United Kingdom", U, W, 56, "Medium", "Site EHS advisor.", "lisa-ellis-05b37663"],
+      ["Nicolas Serfiotis", "EHS Manager, Global Vaccines Distribution Center", "Gembloux / Wavre", "Belgium", E, W, 66, "High", "EHS manager in the Belgian vaccines network.", "nicolas-serfiotis-8121a3118"],
+      ["Marion Boiché", "EHS Manager", "Wavre", "Belgium", E, W, 66, "Medium", "EHS manager at the Wavre vaccines site.", "marion-boich%C3%A9-60945267"],
+      ["Manuel Rastelli", "EHS Manager", "Wavre", "Belgium", E, W, 65, "Medium", "EHS manager at Wavre.", "manuel-rastelli-643aa1a"],
+      ["Christin Süß", "EHS Biosafety and Systems Manager", "Dresden", "Germany", E, W, 68, "High", "Biosafety manager at the Dresden vaccines plant; biohazard containers are in scope.", "dr-christin-s%C3%BC%C3%9F-52362a163"],
+      ["Robert H.", "EHS Manager", "Marburg", "Germany", E, W, 64, "High", "EHS manager at the Marburg vaccines site. Surname hidden on the public profile.", "rcherdman", "x"],
+      ["Beatrice Sacchi", "EHS Manager, Primary and Secondary Manufacturing", "Siena", "Italy", E, W, 64, "Medium", "EHS manager for vaccines manufacturing.", "beatrice-sacchi-380586140"],
+      ["Pablo Rodríguez Carreño", "EHS Advisor & Sustainability Lead", "Aranda de Duero", "Spain", E, S, 60, "High", "Site sustainability lead working on waste reduction.", "pablo-rodr%C3%ADguez-ingenieriaindustrial", "x"],
+      ["Conchita Jimenez-Gonzalez", "VP, Head of R&D EHS & Sustainability", "Global (based in USA)", "United States", G, S, 58, "High", "Sets sustainability targets for all R&D labs. Senior and US-based, so a sponsor rather than a first contact.", "jgconchita"],
+    ],
+    "MSD": [
+      ["Walter Mattioli", "Senior Category Manager, Global Site Services", "Nijmegen / Arnhem region", "Netherlands", E, P, 88, "High", "Buys integrated facilities management and waste management for UK, Spain, Italy and the Netherlands.", "walter-rodzmatt"],
+      ["Christophe Koeune", "Director, Site Services Procurement", "Brussels", "Belgium", E, P, 85, "High", "Procurement director for facilities, MRO and safety supplies.", "christophe-koeune-8ba262"],
+      ["Charlotte Jugård-Nord", "Facility Manager, MSD Sweden (Sodexo)", "Stockholm", "Sweden", N, L, 76, "Medium", "Runs facilities, EHS reporting and internal services for MSD Sweden on behalf of Sodexo. Office site, so low volume, but the Nordic door-opener.", "charlotte-jug%C3%A5rd-nord-6441a659", "x"],
+      ["Henrik Højgaard Poulsen", "Site Manager, MSD Danmark (Sodexo)", "Copenhagen", "Denmark", N, L, 74, "High", "Site manager for MSD Denmark on behalf of Sodexo.", "henrikhpoulsen", "x"],
+      ["Philip Sparrow", "Director, EHS for Europe, Middle East and Africa region", "United Kingdom (regional)", "United Kingdom", U, W, 80, "Medium", "Regional EHS director covering European MSD sites. One public profile now says he has retired, so confirm before outreach.", "philip-sparrow-2727826"],
+      ["Laura Ryan", "Director, Global Safety & Environment", "Ballydine", "Ireland", U, W, 78, "High", "Safety and environment director at the Ballydine site.", "laura-ryan-8a8a824b"],
+      ["Willem Derkx", "Associate Director, Safety & Environment", "Boxmeer (MSD Animal Health)", "Netherlands", E, W, 77, "High", "Safety and environment lead at the Animal Health vaccines hub, a heavy sharps user.", "willem-derkx-23974624"],
+      ["Edel Brennan", "Director of Safety and Environment", "Brinny", "Ireland", U, W, 72, "Medium", "Safety and environment director at the Brinny biologics site.", "edel-brennan-546b90193"],
+      ["Johan van Grimbergen", "Director Procurement, Europe Large Molecules Operations, MSD Animal Health", "Boxmeer", "Netherlands", E, P, 74, "High", "Leads procurement for Boxmeer, Krems and other vaccine sites, with stated circular-procurement expertise.", "johan-van-grimbergen-81b1249", "x"],
+      ["Koen Postuma", "Director, Procurement, Scope 3 Environmental Sustainability", "Netherlands", "Netherlands", E, P, 70, "High", "Procurement sustainability lead; values low-carbon supplier alternatives.", "koenpostuma"],
+      ["Hermann Orozco Albareda", "EHS Director, MSD Animal Health Technology Solutions", "Vitré", "France", E, W, 66, "High", "Global EHS director within Animal Health.", "hermann-orozco-albareda-75848157", "x"],
+      ["David Ormond", "EHS Site Lead, Global Engineering Solutions", "Ballydine", "Ireland", U, W, 68, "High", "EHS site lead at Ballydine.", "david-ormond-9554103b"],
+      ["Damian McCusker", "EHS Associate Director", "Brinny", "Ireland", U, W, 68, "Medium", "Senior EHS role at Brinny.", "damian-mccusker-6ba35064"],
+      ["Stephen Flynn", "Senior Safety and Environment Specialist", "Carlow", "Ireland", U, W, 68, "High", "Environment specialist at the Carlow vaccines and biologics site.", "stephen-flynn-47b757152"],
+      ["Róisín Millar", "Director, Global Safety and the Environment, EHS Systems", "Carlow", "Ireland", U, W, 62, "High", "Global EHS systems role based in Ireland.", "r%C3%B3is%C3%ADn-millar-87b84324"],
+      ["Robert Moore", "Senior EHS Specialist", "Dunboyne", "Ireland", U, W, 64, "High", "EHS specialist at the Dunboyne biologics site.", "robert-moore-008aa654"],
+      ["Mayank Yadav", "Environmental, Health & Safety Specialist", "Carlow", "Ireland", U, W, 58, "High", "EHS specialist at Carlow.", "-mayank-yadav"],
+      ["Stef Spaans", "EHS Compliance Engineer", "Haarlem", "Netherlands", E, W, 64, "High", "EHS compliance at the Haarlem packaging and vaccines site.", "stef-spaans"],
+      ["Paul Verhoeven", "EHS Improvement Engineer", "Boxmeer (MSD Animal Health)", "Netherlands", E, W, 60, "High", "EHS improvement projects at Boxmeer.", "paulverho"],
+      ["Juergen Schwender", "Associate Director, Technical Operations", "Burgwedel", "Germany", E, L, 62, "High", "Technical operations lead with EHS and ISO 14001 responsibility.", "juergen-schwender-1b3abb70"],
+      ["Thierry Capelle", "Associate Director, Facility Management (Belgium, Luxembourg, France, Poland, Slovakia)", "Belgium", "Belgium", E, L, 62, "Medium", "Multi-country facilities management lead.", "thierry-capelle-5a69894"],
+      ["Fausto Lombardi", "Associate Director, Site Procurement Lead", "Ireland", "Ireland", U, P, 62, "Medium", "Site procurement lead in Ireland.", "fausto-lombardi-73a61723"],
+      ["Christine Neudert", "Executive Director & General Manager, MSD Animal Health Danube Biotech", "Krems", "Austria", E, L, 54, "High", "Site general manager; referral route to site EHS.", "christine-neudert-3ba3aa73"],
+    ],
+    "Lonza": [
+      ["Veronika Scholz", "Head of Material Flow and Waste Management", "Visp", "Switzerland", E, W, 93, "High", "Heads waste management at Lonza's largest site. Direct owner of waste containers and flows.", "veronika-scholz-6995b539"],
+      ["Julian Furrer", "Waste Manager", "Visp", "Switzerland", E, W, 87, "High", "Hands-on waste manager at Visp.", "julian-furrer-1973071b7"],
+      ["Martin Witschard", "Head of EHS, Sustainability & Site Protection", "Visp", "Switzerland", E, W, 83, "High", "Leads EHS and sustainability for the Visp site. Senior sponsor.", "martin-witschard"],
+      ["Marco Coltelli", "Regional Category Manager; Senior Strategic Buyer, Lab Supplies (EMEA)", "Slough", "United Kingdom", U, P, 83, "High", "Buys lab supplies and consumables for EMEA.", "marcocoltelli"],
+      ["Stefan Holubar", "Environmental Sustainability Lead", "Visp", "Switzerland", E, S, 80, "High", "Site environmental sustainability lead.", "stefan-holubar-73944629b"],
+      ["Robert Alvarez", "Head of Site Digital Transformation; Environmental Sustainability Site Lead", "Slough", "United Kingdom", U, S, 72, "High", "Main role is now digital transformation at the Slough biologics site, but he still lists the site sustainability lead role.", "robert-alvarez-39445a66"],
+      ["Rowena Dossett", "Environment, Health and Safety Manager", "Slough", "United Kingdom", U, W, 77, "High", "EHS manager at Slough.", "rowena-dossett-9536761a"],
+      ["Lars Reulen", "Senior Director, Head of Engineering and EHS", "Geleen", "Netherlands", E, W, 74, "High", "Leads EHS at the Dutch cell and gene therapy site, where biohazard and sharps waste is routine.", "lars-reulen-0939124a"],
+      ["Marcia Perrin", "Global Head EHS", "Basel", "Switzerland", E, W, 74, "High", "Global EHS head. Sponsor for a group-wide standard.", "marcia-perrin-11079524"],
+      ["Cesare Gallo", "Head of Indirect Procurement, Switzerland and Europe", "Zurich", "Switzerland", E, P, 73, "High", "Leads indirect procurement in Europe.", "cesare-gallo"],
+      ["Clara Fiuza", "Associate Director, Global Sustainability", "Basel", "Switzerland", E, S, 72, "High", "Group sustainability team.", "clara-fiuza"],
+      ["Zaira Heredia", "EHS Manager, Biosafety", "Visp", "Switzerland", E, W, 72, "High", "Biosafety manager; biohazard containers are in scope.", "zaira-heredia"],
+      ["Thomas Büchner", "Senior Manager EHS", "Visp", "Switzerland", E, W, 70, "High", "Senior EHS manager at Visp.", "thomas-b%C3%BCchner-1a72483b"],
+      ["Tim Kästner", "EHS Manager, Drug Product Services", "Stein / Basel", "Switzerland", E, W, 72, "High", "EHS manager for sterile fill and finish, a sharps-heavy operation.", "tim-k%C3%A4stner-77a51555"],
+      ["Sila Vogiatzaki", "Senior Director, Responsible Sourcing and Supplier Relationship", "Basel", "Switzerland", E, P, 68, "High", "Leads responsible sourcing.", "sila-vogiatzaki-b25911115"],
+      ["Carine Rémond", "Associate Director, Indirect Procurement Transformation Program Lead", "Colmar", "France", E, P, 66, "High", "Indirect procurement covering facility management, labs and sustainability initiatives.", "carine-r%C3%A9mond-737591156"],
+      ["Dina Elzoairy", "Operational Buyer", "Slough", "United Kingdom", U, P, 64, "High", "Places orders for lab consumables and lab services.", "dina-elzoairy-44526225"],
+      ["Bodo Ortmann", "MSAT & EHS Manager", "Cologne", "Germany", E, W, 66, "High", "EHS manager at the Cologne bioscience site.", "bodo-ortmann-715a8a3"],
+      ["Richard Motlíček", "EHS Manager (also QA Manager)", "Kouřim", "Czech Republic", E, W, 64, "High", "EHS manager at the Kouřim site.", "richard-motl%C3%AD%C4%8Dek-536443101"],
+      ["Mark McLoughlin", "EHS Manager", "Ireland (previously Visp)", "Ireland", U, W, 60, "High", "EHS manager, now listed in Ireland since June 2025; earlier an EHS engineer at Visp.", "mark-mcloughlin-a8577840"],
+      ["Morgan Artusse", "Associate Director, Global EHS", "Basel", "Switzerland", E, W, 64, "High", "Global EHS team.", "morganartusse"],
+      ["Thomas Grötsch", "Senior Director, Quality Control", "Visp", "Switzerland", E, L, 62, "High", "Leads five biologics testing departments; large lab user group.", "thomas-gr%C3%B6tsch-0b297367"],
+      ["Michal Gorski", "Associate Director, Quality Control", "Visp", "Switzerland", E, L, 58, "High", "Oversees four QC laboratories.", "michaljgorski"],
+      ["Eloy Pombar Pérez", "Head of Engineering and Facilities", "Porriño", "Spain", E, L, 62, "High", "Facilities head at the Porriño biologics site.", "eloy-pombar-p%C3%A9rez-40b36b204", "x"],
+      ["Johann Blanc Barrenechea", "Sustainability Manager, Center of Applied Sustainability", "Switzerland", "Switzerland", E, S, 60, "Medium", "Earlier led site waste, single-use-plastic avoidance and circular-economy work at Visp; now in the capsules division.", "jblancb", "x"],
+      ["Hanspeter Dietschi", "Head of Facility and Office Services, HQ Basel", "Basel", "Switzerland", E, L, 54, "High", "Facilities at headquarters; office site.", "hanspeter-dietschi-5557b23"],
+      ["Seif El Mekki", "EHS Manager", "Chaudfontaine", "Belgium", E, W, 56, "High", "EHS manager based in Chaudfontaine since January 2025.", "seif-el-mekki", "x"],
+    ],
+    "AbbVie": [
+      ["Luca Gironi", "IPPC & Waste Supervisor", "Campoverde di Aprilia", "Italy", E, W, 88, "High", "Supervises waste and environmental permits at the Italian manufacturing site.", "luca-gironi"],
+      ["Darius Jochemczyk", "Senior EHS Manager", "Ludwigshafen", "Germany", E, W, 84, "High", "Senior EHS manager at AbbVie's largest European R&D and production site.", "darius-jochemczyk-23417536a"],
+      ["Stefan Mueller", "Director, Environmental Sustainability & Product Stewardship", "Ludwigshafen", "Germany", E, S, 82, "High", "Leads environmental sustainability from Ludwigshafen.", "drstefanmueller"],
+      ["Anna Rita Pelliccia", "Director, Environment, Health & Safety", "Campoverde di Aprilia", "Italy", E, W, 80, "High", "EHS director at the Italian site.", "anna-rita-pelliccia-430847b", "x"],
+      ["Stephen Carty", "Director, Integrated Facilities Management", "Ireland", "Ireland", U, L, 78, "High", "Leads integrated facilities management; previously at Westport and Sligo.", "cartys"],
+      ["Marty Ryan", "Category Manager, Facilities (outside US)", "Ireland", "Ireland", U, P, 78, "High", "Procurement category manager for facilities and real estate outside the US.", "marty-ryan-276115111"],
+      ["Peter Power", "Environment, Health and Safety Manager", "Cork", "Ireland", U, W, 76, "High", "EHS manager at the Cork site.", "peter-power-85047148"],
+      ["Mary Murphy", "Environment, Health and Safety Manager", "Sligo", "Ireland", U, W, 76, "High", "EHS manager at Sligo.", "safetyismybusiness"],
+      ["Richard Bagnall", "Environmental Health and Safety Lead", "Westport", "Ireland", U, W, 75, "High", "EHS lead at the Westport sterile injectables site.", "richard-bagnall-0596681b"],
+      ["Anja Wendler", "EHS Manager (CBRE, on site at AbbVie)", "Ludwigshafen", "Germany", E, W, 72, "High", "EHS manager at the facilities contractor serving Ludwigshafen.", "anja-wendler-165300290", "x"],
+      ["Peter Moran", "Manager, Global Energy and Sustainability Program; co-lead Team Evergreen", "Sligo", "Ireland", U, S, 72, "High", "Co-leads the employee sustainability network across Irish sites.", "peter-moran-4855731a"],
+      ["Áine Dunleavy", "Associate Director, EHS", "Cork (Carrigtwohill)", "Ireland", U, W, 72, "High", "Senior EHS role in Cork.", "%C3%A1ine-dunleavy-mba-023169215"],
+      ["Ruaidhri Mohally", "EHS Manager, Regional Support EU & Singapore", "Sligo", "Ireland", U, W, 70, "High", "Regional EHS support; earlier sustainability leader at Sligo.", "ruaidhri-mohally-11498142"],
+      ["Paul Lundy", "Energy and Sustainability Leader", "Ireland", "Ireland", U, S, 66, "High", "Site energy and sustainability lead.", "paul-lundy-b61a916a"],
+      ["Roberta Bruni", "Procurement Associate Director, Europe Regional Lead", "Rome / Latina", "Italy", E, P, 70, "High", "Leads site procurement in Europe.", "roberta-bruni-2695776"],
+      ["Olimpio Dos Santos Castro", "International Category Management Lead", "Madrid", "Spain", E, P, 66, "High", "Leads indirect categories outside the US.", "olimpio-dos-santos-castro-513b0a14", "x"],
+      ["Johannes Grieser", "Category Manager, Lab Equipment", "Ludwigshafen", "Germany", E, P, 66, "High", "Closest lab-category buyer found.", "johannes-grieser-8326a6221"],
+      ["Achim Döllinger", "Procurement Lead DACH", "Wiesbaden", "Germany", E, P, 62, "High", "Regional procurement lead for Germany, Austria and Switzerland.", "achimdoellinger"],
+      ["Michaele Moreau", "Manager, Europe Commercial EHS", "Paris region", "France", E, W, 62, "Medium", "EHS for European commercial offices, including the Nordic affiliates.", "michaele-moreau-11995322"],
+      ["Sinéad Weldon", "Manager, Global EHS Audit Program (EMEA & Singapore)", "Cork", "Ireland", U, W, 60, "High", "Audits site EHS, including waste contractors.", "sin%C3%A9ad-weldon-812b677"],
+      ["Andre Costa Ribeiro", "Environmental Health Safety Engineer", "Cork (Carrigtwohill)", "Ireland", U, W, 60, "High", "EHS engineer in Cork.", "andre-costa-ribeiro", "x"],
+      ["James Cullen", "Environment, Health and Safety Manager", "Ireland", "Ireland", U, W, 60, "Medium", "EHS manager; site not public.", "j-cullen"],
+      ["Martin Harkin", "EHS Manager (MALONE Group, on site at AbbVie Clonshaugh)", "Dublin", "Ireland", U, W, 56, "Medium", "Contractor-side EHS manager at the Dublin site.", "martin-harkin-153675155", "x"],
+      ["Benoit Charles", "Head of Procurement, Europe HQ & French Affiliate", "Paris", "France", E, P, 56, "High", "Indirect procurement for European HQ.", "benoit-charles-vol-3906557"],
+    ],
+  };
+
+  // Independent web-search cross-check results: name -> {v, note, src, email, phone}
+  const verified = {
+    "Jose-Francisco Vallejo Carrera": { v: "CONFIRMED", note: "named by Sanofi's own site as Head of Environment & Environmental Sustainability (2023 and 2024 articles).", src: "https://www.sanofi.com/en/magazine/ai-in-healthcare/environmentally-responsible-ai" },
+    "Giulia Usai": { v: "CONFIRMED", note: "named in a 2024 Trellis article as GSK senior director, procurement sustainability.", src: "https://trellis.net/article/gsk-made-the-biggest-climate-promise-in-pharma-can-it-keep-it/" },
+    "Koen Postuma": { v: "CONFIRMED", note: "an org-chart aggregator lists the same role since 2024 (single weak source).", src: "https://theorg.com/org/merck/org-chart/koen-postuma" },
+    "Aude Arkam": { v: "PARTIAL", note: "a June 2023 Sanofi article gives the same title; nothing more recent found.", src: "https://www.sanofi.com/en/magazine/sustainability/we-re-eco-designing-from-rd-to-commercialization" },
+    "Tom Newbigging": { v: "PARTIAL", note: "an undated aggregator lists him as Director, Procurement Sustainability (Nature) at GSK London.", src: "https://humantic.ai/public-profile/tom-newbigging-c6a15fd8d78a68ea" },
+    "Emma Lindahl": { v: "PARTIAL", note: "search snippet shows AstraZeneca, Södertälje and circular-economy keywords, but not the title.", src: "https://se.linkedin.com/in/emma-lindahl" },
+    "Fredrik Hellman": { v: "PARTIAL", note: "a 2014 AstraZeneca Sweden environment report names him as SHE head in Mölndal; current title not independently dated.", src: "https://www.astrazeneca.com/content/dam/az-se/dokument/miljorrapporter/Miljoumlredovisning-2014-Sverige.pdf" },
+    "Rias Al Ajba": { v: "PARTIAL", note: "search snippet shows Copenhagen, procurement and Novo Nordisk, but not the title.", src: "https://dk.linkedin.com/in/riasalajba" },
+    "Peter Power": { v: "NOTE", note: "his profile shows EHS Manager at Cork since June 2024; an older Irish EPA licence document names a different EHS lead." },
+  };
+
+  const angles = {
+    [W]: "Offer a like-for-like trial of WoodSafe against the current plastic sharps/hazardous-waste container, with the CO2 and fossil-plastic saving per container and the UN/ADR approval documents.",
+    [S]: "Position WoodSafe as a ready, measurable action for the site's plastic and waste targets: a drop-in swap with a documented footprint reduction they can report.",
+    [P]: "Ask which contract or category covers sharps and hazardous-waste containers, and offer a price and footprint comparison plus supplier sustainability documentation.",
+    [L]: "Ask who chooses the lab's sharps containers and offer samples for a pilot in one lab or building, tied to their green-lab certification.",
+  };
+
+  const fold = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ø/g, "o").replace(/æ/g, "ae").replace(/ß/g, "ss").replace(/['’]/g, "").toLowerCase();
+  const contacts = [];
+  for (const co of companies) {
+    for (const r of rows[co.name] || []) {
+      const [name, title, site, country, region, fn, score0, conf0, why, li, flag] = r;
+      const v = verified[name] || {};
+      let score = score0, confidence = conf0;
+      if (v.v === "CONFIRMED") { confidence = "High, cross-checked"; score = Math.min(99, score + 2); }
+      if (v.v === "PARTIAL") { confidence = "Medium, partly cross-checked"; }
+      if (v.v === "CONTRADICTED") { confidence = "Low"; score = Math.max(20, score - 30); }
+      const parts = name.split(" ");
+      let email = v.email || "", emailGuess = false;
+      if (!email && co.domain && flag !== "x" && parts.length === 2 && /^[\p{L}-]+$/u.test(parts[0]) && /^[\p{L}'’-]+$/u.test(parts[1])) {
+        email = fold(parts[0]) + "." + fold(parts[1]) + "@" + co.domain; emailGuess = true;
+      }
+      contacts.push({
+        company: co.name, name, title, site, country, region, fn, score,
+        tier: score >= 75 ? "A" : score >= 60 ? "B" : "C",
+        confidence, why: why + (v.note ? " Cross-check: " + v.note : ""), angle: angles[fn],
+        linkedin: li ? "https://www.linkedin.com/in/" + li : "",
+        email, emailGuess, phone: v.phone || "",
+        sources: v.src ? [v.src] : [],
+      });
+    }
+  }
+  window.DATA = { updated: "15 Nov 2026 (every person re-checked)", companies, contacts };
+})();
+
+</script>
+<script>
+const D = window.DATA || { companies: [], contacts: [], updated: "" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const store = JSON.parse(localStorage.getItem("woodsafe-contacts") || "{}");
+const save = () => localStorage.setItem("woodsafe-contacts", JSON.stringify(store));
+const key = c => c.company + "|" + c.name;
+let current = "All";
+
+$("#sub").textContent = `${D.contacts.length} people across ${D.companies.length} companies · data collected ${D.updated} · your status and notes are saved in this browser only`;
+
+const uniq = f => [...new Set(D.contacts.map(f).filter(Boolean))].sort();
+uniq(c => c.fn).forEach(v => $("#fn").insertAdjacentHTML("beforeend", `<option>${esc(v)}</option>`));
+uniq(c => c.region).forEach(v => $("#region").insertAdjacentHTML("beforeend", `<option>${esc(v)}</option>`));
+
+function tabs() {
+  const names = ["All", ...D.companies.map(c => c.name)];
+  $("#tabs").innerHTML = names.map(n => {
+    const count = n === "All" ? D.contacts.length : D.contacts.filter(c => c.company === n).length;
+    return `<button class="tab ${n === current ? "on" : ""}" data-n="${esc(n)}">${esc(n)}<span class="n">${count}</span></button>`;
+  }).join("");
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) { current = b.dataset.n; tabs(); render(); } });
+
+function filtered() {
+  const q = $("#q").value.trim().toLowerCase(), fn = $("#fn").value, rg = $("#region").value, tr = $("#tier").value, hd = $("#hideDone").checked;
+  return D.contacts.filter(c =>
+    (current === "All" || c.company === current) &&
+    (!fn || c.fn === fn) && (!rg || c.region === rg) && (!tr || c.tier === tr) &&
+    (!hd || !["Contacted", "Replied", "Not relevant"].includes((store[key(c)] || {}).status)) &&
+    (!q || [c.name, c.title, c.site, c.country, c.company, c.why, c.angle].join(" ").toLowerCase().includes(q))
+  ).sort((a, b) => b.score - a.score);
+}
+
+function companyBox() {
+  const c = D.companies.find(x => x.name === current);
+  if (!c) { $("#company").innerHTML = ""; return; }
+  const row = (k, v) => v ? `<dt>${k}</dt><dd>${v}</dd>` : "";
+  $("#company").innerHTML = `<div class="company"><h2>${esc(c.name)}</h2><dl>
+    ${row("Key sites", esc(c.sites))}
+    ${row("Why WoodSafe fits", esc(c.fit))}
+    ${row("Waste set-up today", esc(c.waste))}
+    ${row("Best way in", esc(c.entry))}
+    ${row("Email pattern", c.pattern ? esc(c.pattern) + ' <span class="guess">(unconfirmed format)</span>' : "")}
+    ${row("Switchboard", esc(c.phone))}
+  </dl></div>`;
+}
+
+function render() {
+  companyBox();
+  const rows = filtered();
+  if (!rows.length) { $("#list").innerHTML = `<div class="empty">No contacts match.</div>`; return; }
+  $("#list").innerHTML = rows.map((c, i) => {
+    const s = store[key(c)] || {};
+    const done = ["Contacted", "Replied", "Not relevant"].includes(s.status);
+    const email = c.email ? `<span>✉ <a href="mailto:${esc(c.email)}">${esc(c.email)}</a>${c.emailGuess ? ' <span class="guess">pattern guess</span>' : ""}</span>` : "";
+    const srcs = (c.sources || []).map((u, j) => `<a href="${esc(u)}" target="_blank" rel="noopener">source ${j + 1}</a>`).join(" · ");
+    return `<div class="card ${done ? "done" : ""}">
+      <div class="rank"><div class="pos">#${i + 1}</div><div class="score">${c.score}</div><span class="tier ${esc(c.tier)}">Tier ${esc(c.tier)}</span></div>
+      <div>
+        <div class="name">${esc(c.name)}</div>
+        <div class="title">${esc(c.title)}</div>
+        <div class="meta">${esc(current === "All" ? c.company + " · " : "")}${esc([c.site, c.country].filter(Boolean).join(", "))}</div>
+        <div class="chips"><span class="chip">${esc(c.fn)}</span><span class="chip">${esc(c.region)}</span><span class="chip ${c.confidence === "Low" ? "low" : ""}">Confidence: ${esc(c.confidence)}</span></div>
+        <div class="why"><b>Why:</b> ${esc(c.why)}</div>
+        ${c.angle ? `<div class="why"><b>Opening angle:</b> ${esc(c.angle)}</div>` : ""}
+        <div class="contact">
+          ${c.linkedin ? `<span>in <a href="${esc(c.linkedin)}" target="_blank" rel="noopener">LinkedIn profile</a></span>` : ""}
+          ${email}
+          ${c.phone ? `<span>☎ ${esc(c.phone)}</span>` : ""}
+        </div>
+        ${srcs ? `<div class="srcs">${srcs}</div>` : ""}
+        <div class="mine">
+          <select data-k="${esc(key(c))}" data-f="status">${["Not contacted", "Contacted", "Replied", "Meeting booked", "Not relevant"].map(o => `<option ${s.status === o ? "selected" : ""}>${o}</option>`).join("")}</select>
+          <input data-k="${esc(key(c))}" data-f="note" placeholder="Your notes…" value="${esc(s.note || "")}">
+        </div>
+      </div></div>`;
+  }).join("");
+}
+
+$("#list").addEventListener("change", e => {
+  const el = e.target; if (!el.dataset.k) return;
+  (store[el.dataset.k] ||= {})[el.dataset.f] = el.value; save();
+  if (el.dataset.f === "status") render();
+});
+["q", "fn", "region", "tier", "hideDone"].forEach(id => $("#" + id).addEventListener("input", render));
+
+$("#csv").addEventListener("click", () => {
+  const cols = ["company", "name", "title", "site", "country", "region", "fn", "score", "tier", "confidence", "why", "angle", "linkedin", "email", "emailGuess", "phone"];
+  const cell = v => '"' + String(v ?? "").replace(/"/g, '""') + '"';
+  const lines = [[...cols, "status", "note"].join(",")].concat(filtered().map(c => {
+    const s = store[key(c)] || {};
+    return [...cols.map(k => cell(c[k])), cell(s.status || "Not contacted"), cell(s.note)].join(",");
+  }));
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + lines.join("\n")], { type: "text/csv" }));
+  a.download = "woodsafe-key-individuals.csv"; a.click();
+});
+
+tabs(); render();
+</script>
+</body>
+</html>
