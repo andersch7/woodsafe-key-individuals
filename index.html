@@ -96,7 +96,7 @@
   </div>
   <div id="company"></div>
   <div id="list"></div>
-  <p class="foot">Ranked by score (0–100): role fit for sharps and hazardous-waste containers, site relevance, buying influence, and confidence that the person is still in the role. Tier A = contact first, B = secondary route, C = fallback or referral. Click a row for the reasoning, opening angle and contact details. No confirmed work email was found for anyone, so none are listed.</p>
+  <p class="foot">Ranked by score (0–100): role fit for sharps and hazardous-waste containers, site relevance, buying influence, and confidence that the person is still in the role. Tier A = contact first, B = secondary route, C = fallback or referral. Click a row for the reasoning, opening angle and contact details. An email is listed only where the address is published next to the person's name in a public document; the source is linked.</p>
 </div></main>
 <script>
 // WoodSafe key individuals. Collected 2026-11-15 via Perplexity (public LinkedIn/web data). Every person re-checked the same day against their public profile; leavers removed, changed details corrected.
@@ -377,6 +377,18 @@
     "Peter Power": { v: "NOTE", note: "his profile shows EHS Manager at Cork since June 2024; an older Irish EPA licence document names a different EHS lead." },
   };
 
+  // Work emails published in public documents, each checked in the source on 2026-11-20.
+  const emails = {
+    "Veronika Scholz": { e: "veronika.scholz@lonza.com", src: "https://pubdb.bfe.admin.ch/de/publication/download/8107", where: "Swiss Federal Office of Energy report, 2015" },
+    "Richard Motlíček": { e: "richard.motlicek@lonza.com", src: "https://mpo.gov.cz/ippc/tps/specialni-organicka-chemie/", where: "Czech Ministry of Industry and Trade working-group list" },
+    "Bodo Ortmann": { e: "bodo.ortmann@lonza.com", src: "https://bioscience.lonza.com/lonza_bs/CH/en/download/product/asset/27853", where: "Lonza scientific poster, 2010" },
+    "Mary Murphy": { e: "murphy.mary@abbvie.com", src: "https://leap.epa.ie/docs/a8094320-0e81-411a-b424-94eb6f5faebf.pdf", where: "Irish EPA licence correspondence, 2023" },
+    "Áine Dunleavy": { e: "aine.dunleavy@abbvie.com", src: "https://leap.epa.ie/docs/3a59f1ca-fff5-4b46-a73d-3c9447586642.pdf", where: "Irish EPA licence correspondence, 2023" },
+    "Ruaidhri Mohally": { e: "ruaidhri.mohally@abbvie.com", src: "https://epawebapp.epa.ie/licences/lic_eDMS/090151b28060480f.pdf", where: "Irish EPA annual environmental report" },
+    "Robert Moore": { e: "robert.moore4@msd.com", src: "https://leap.epa.ie/docs/2ee5f69a-e04b-4d48-a80b-48bd80c7e4ee.pdf", where: "Irish EPA annual environmental report, 2024" },
+    "Lisa Ellis": { e: "lisa.a.ellis@gsk.com", src: "https://assets.publishing.service.gov.uk/media/6ab3c161a9c3d267bccced85/list-of-dangerous-goods-safety-advisers.csv", where: "UK government list of dangerous goods safety advisers" },
+  };
+
   const angles = {
     [W]: "Offer a like-for-like trial of WoodSafe against the current plastic sharps/hazardous-waste container, with the CO2 and fossil-plastic saving per container and the UN/ADR approval documents.",
     [S]: "Position WoodSafe as a ready, measurable action for the site's plastic and waste targets: a drop-in swap with a documented footprint reduction they can report.",
@@ -395,13 +407,14 @@
       if (v.v === "PARTIAL") { confidence = "Medium, partly cross-checked"; }
       if (v.v === "CONTRADICTED") { confidence = "Low"; score = Math.max(20, score - 30); }
       const parts = name.split(" ");
-      let email = v.email || "", emailGuess = false;
+      const em = emails[name] || {};
+      let email = em.e || "", emailGuess = false;
       contacts.push({
         company: co.name, name, title, site, country, region, fn, score,
         tier: score >= 75 ? "A" : score >= 60 ? "B" : "C",
         confidence, why: why + (v.note ? " Cross-check: " + v.note : ""), angle: angles[fn],
         linkedin: li ? "https://www.linkedin.com/in/" + li : "",
-        email, emailGuess, phone: v.phone || "",
+        email, emailGuess, emailSource: em.src || "", emailWhere: em.where || "", phone: v.phone || "",
         sources: v.src ? [v.src] : [],
       });
     }
@@ -465,7 +478,7 @@ function render() {
   if (!rows.length) { $("#list").innerHTML = `<div class="empty">No contacts match these filters.</div>`; return; }
   const span = all ? 8 : 7;
   $("#list").innerHTML = `<table><thead><tr>
-    <th class="pos num">#</th><th>Name and role</th>${all ? "<th>Company</th>" : ""}<th class="c-loc">Location</th><th class="c-fn">Function</th><th class="num">Score</th><th>LinkedIn</th><th class="c-status">Status</th>
+    <th class="pos num">#</th><th>Name and role</th>${all ? "<th>Company</th>" : ""}<th class="c-loc">Location</th><th class="c-fn">Function</th><th class="num">Score</th><th>Contact</th><th class="c-status">Status</th>
   </tr></thead><tbody>` + rows.map((c, i) => {
     const k = key(c), s = store[k] || {}, isOpen = open.has(k);
     const main = `<tr class="row ${isOpen ? "open" : ""} ${isDone(c) ? "done" : ""}" data-k="${esc(k)}">
@@ -475,7 +488,7 @@ function render() {
       <td class="c-loc">${esc([c.site, c.country].filter(Boolean).join(", "))}</td>
       <td class="c-fn">${esc(c.fn)}</td>
       <td class="num">${c.score}<span class="tier ${esc(c.tier)}" title="Tier ${esc(c.tier)}">${esc(c.tier)}</span></td>
-      <td>${c.linkedin ? `<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">Profile</a>` : "–"}</td>
+      <td>${c.linkedin ? `<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">Profile</a>` : "–"}${c.email ? ` · <a href="mailto:${esc(c.email)}" title="${esc(c.email)}">Email</a>` : ""}</td>
       <td class="c-status"><select data-k="${esc(k)}" data-f="status" aria-label="Status">${STATUSES.map(o => `<option ${s.status === o ? "selected" : ""}>${o}</option>`).join("")}</select></td>
     </tr>`;
     if (!isOpen) return main;
@@ -484,7 +497,7 @@ function render() {
     return main + `<tr class="detail"><td colspan="${span}"><div class="grid">
       ${g("Why this person", esc(c.why))}
       ${g("Opening angle", esc(c.angle))}
-      ${g("Email", c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : "")}
+      ${g("Email", c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a> · published in <a href="${esc(c.emailSource)}" target="_blank" rel="noopener">${esc(c.emailWhere)}</a>` : "")}
       ${g("Phone", esc(c.phone))}
       ${g("Location", esc([c.site, c.country].filter(Boolean).join(", ")) + " · " + esc(c.region))}
       ${g("Confidence", esc(c.confidence))}
